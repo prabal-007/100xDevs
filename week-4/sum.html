@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" oninput="" placeholder="first number" id="num1">
+    <br>
+    <br>
+    <input type="text" placeholder="second number" id="num2">
+    <br>
+    <br>
+    <button onclick="calculateSum()">Calculate</button>
+
+    <p id="ans">
+        <!-- sum : 0 -->
+    </p>
+
+    <script>
+        async calculateSum() {
+            let var1 = parseFloat(document.getElementById("num1").value) || 0;
+            let var2 = parseFloat(document.getElementById("num2").value) || 0;
+            // let ans = var1 + var2
+            const response = await fetch("https://sum-server.100xdevs.com/sum?a=" + var1 + "&b=" + var2);
+            const ans = await response.text()
+
+            document.getElementById("ans").textContent = `The sum of ${var1} and ${var2} is ${ans}`
+        // window.onload = function() {
+        //     document.getElementById('num1').addEventListener('input', calculateSum);
+        //     document.getElementById('num2').addEventListener('input', calculateSum)
+        }
+    </script>
+    
+</body>
+</html>
