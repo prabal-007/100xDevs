@@ -7,33 +7,36 @@
     <title>Document</title>
 </head>
 <script>
-    globalid = 1;
-    function markAsDone() {
-
+    let globalid = 1;
+    function markAsDone(todoId) {
+        const parent = document.getElementById(todoId);
+        parent.children[2].innerHTML = 'Done'
     }
+
     function createChild(title, desc, id) {
-        const child = document.createElement('div')
+        const child = document.createElement('div');
 
-        const titleChild = document.createElement('div')
+        const titleChild = document.createElement('div');
         titleChild.innerHTML = title;
-        const descChild = document.createElement('div')
+        const descChild = document.createElement('div');
         descChild.innerHTML = desc;
-        const btn = document.createElement('button')
-        btn.innerHTML = 'Mark as Done'
-        btn.setAttribute('onClick', `markAsDone(${id})`)
+        const btn = document.createElement('button');
+        btn.innerHTML = 'Mark as Done';
+        btn.setAttribute('onClick', `markAsDone(${id})`);
 
-        child.appendChild(titleChild)
-        child.appendChild(descChild)
-        child.appendChild(btn)
+        child.appendChild(titleChild);
+        child.appendChild(descChild);
+        child.appendChild(btn);
         child.setAttribute('id', id);
 
         return child;
     }
+
     function addtodo() {
-        const title = document.getElementById('title').value
-        const desc = document.getElementById('description').value
-        const parent = document.getElementById('todos')
-        parent.appendChild(createChild(title, desc, globalid++))
+        const title = document.getElementById('title').value;
+        const desc = document.getElementById('description').value;
+        const parent = document.getElementById('todos');
+        parent.appendChild(createChild(title, desc, globalid++));
     }
 </script>
 
@@ -46,7 +49,7 @@
             <br><br>
             <button onclick="addtodo()">Add Todo</button>
         </div>
-        <div class="todos"></div>
+        <div id="todos"></div>
     </div>
 </body>
 </html>
