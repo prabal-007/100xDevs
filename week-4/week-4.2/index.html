@@ -7,22 +7,33 @@
     <title>Document</title>
 </head>
 <script>
+    globalid = 1;
+    function markAsDone() {
+
+    }
+    function createChild(title, desc, id) {
+        const child = document.createElement('div')
+
+        const titleChild = document.createElement('div')
+        titleChild.innerHTML = title;
+        const descChild = document.createElement('div')
+        descChild.innerHTML = desc;
+        const btn = document.createElement('button')
+        btn.innerHTML = 'Mark as Done'
+        btn.setAttribute('onClick', `markAsDone(${id})`)
+
+        child.appendChild(titleChild)
+        child.appendChild(descChild)
+        child.appendChild(btn)
+        child.setAttribute('id', id);
+
+        return child;
+    }
     function addtodo() {
         const title = document.getElementById('title').value
         const desc = document.getElementById('description').value
-        console.log(`title - ${title} Desc - ${desc}`)
-        const main = document.getElementById('main')
-        const btn = document.createElement('button')
-        btn.innerHTML = `Mark as done`
-        const container = document.createElement('div')
-        const titleDiv = document.createElement('div')
-        titleDiv.innerHTML = title
-        const descDiv = document.createElement('div')
-        descDiv.innerHTML = desc
-        container.appendChild(titleDiv)
-        container.appendChild(descDiv)
-        container.appendChild(btn)
-        main.appendChild(container)
+        const parent = document.getElementById('todos')
+        parent.appendChild(createChild(title, desc, globalid++))
     }
 </script>
 
@@ -35,6 +46,7 @@
             <br><br>
             <button onclick="addtodo()">Add Todo</button>
         </div>
+        <div class="todos"></div>
     </div>
 </body>
 </html>
