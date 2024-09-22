@@ -11,7 +11,7 @@ router.post('/courses', (req, res) => {
 });
 
 router.get('/courses', (rq, res) => {
-
+    res.send('hello')
 });
 
 module.exports = router;
