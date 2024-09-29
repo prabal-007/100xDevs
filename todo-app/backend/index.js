@@ -2,11 +2,13 @@ const express = require("express");
 const { createTodo, updateTodo } = require('./types');
 const { todo } = require("./db");
 const db = require("./db");
+const cors = require('cors');
 
 const app = express();
 const port = 3000
 
 app.use(express.json());
+app.use(cors());
 
 app.post('/todo', async (req, res) => {
     const createPayload = req.body;
@@ -30,7 +32,7 @@ app.post('/todo', async (req, res) => {
 });
 
 app.get('/todos', async (req, res) => {
-    const todos = await db.find({})
+    const todos = await todo.find({})
     res.json({
         todos
     })
@@ -47,8 +49,8 @@ app.put('/completed', async (req, res) => {
         return;
     }
 
-    await db.update({
-        _id: req.body._id
+    await todo.update({
+        _id: req.body.id
     }, {
         completed: true
     }) 
