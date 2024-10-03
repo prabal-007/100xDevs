@@ -2,32 +2,48 @@ import './App.css'
 import { useState } from 'react'
 
 function App() {
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      title: "Gym",
+      description: "Go to Gym"
+    },
+    {
+      id: 2,
+      title: "DSA",
+      description: "Complate dsa from TUF+"
+    },
+    {
+      id: 3,
+      title: "DEV",
+      description: "Complete 100XDev tuts"
+    }
+  ])
+
+  function addTodo() {
+    setTodos([...todos, {
+      id: todos.length + 1,
+      title: Math.ceil(Math.random() * 10),
+      description: Math.random()
+    }])
+  }
+
   return (
     <>
-      <HeaderWithBtn />
-      <Header title={'Stark'} />
-      <Header title={'Stark1'} />
+    <button onClick={addTodo}>Add New todo</button>
+    {todos.map((todo) => {
+      return <Todo key={todo.id} title={todo.title} description={todo.description}></Todo>
+    })}
     </>
   )
 }
 
-function HeaderWithBtn() {
-  const [head1, sethead1] = useState('Prabal')
-
-  const handle = () => {
-    sethead1(Math.ceil(Math.random() * 10))
-  }
-
-  return <div>
-    <button onClick={handle}>Change Header</button>
-    <Header title={head1} />
-  </div>
-}
-
-function Header({ title }) {
+function Todo ({title, description}) {
   return <div>
     <h4>{title}</h4>
+    <p>{description}</p>
   </div>
 }
+
 
 export default App
