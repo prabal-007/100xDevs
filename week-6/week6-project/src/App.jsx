@@ -1,18 +1,32 @@
 import './App.css'
+import { useState } from 'react'
 
 function App() {
-
   return (
     <>
-      <Header title={'Prabal'}/>
-      <Header title={'Stark'}/>
+      <HeaderWithBtn />
+      <Header title={'Stark'} />
+      <Header title={'Stark1'} />
     </>
   )
 }
 
-function Header({title}) {
+function HeaderWithBtn() {
+  const [head1, sethead1] = useState('Prabal')
+
+  const handle = () => {
+    sethead1(Math.ceil(Math.random() * 10))
+  }
+
   return <div>
-    <h1>{title}</h1>
+    <button onClick={handle}>Change Header</button>
+    <Header title={head1} />
+  </div>
+}
+
+function Header({ title }) {
+  return <div>
+    <h4>{title}</h4>
   </div>
 }
 
