@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<title>
+    Zerodha
+</title>
+
+<body>
+    <div style="display: flex; justify-content: space-between;
+    padding-left: 180px; padding-right: 180px; box-shadow: 2px 1px 2px #eee;">
+        <div style="padding: 19px;">
+            <img src="logo.svg" width="130">
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <div style="padding: 18px; color: #666; cursor: pointer;">Signup</div>
+            <div style="padding: 18px; color: #666; cursor: pointer;">About</div>
+            <div style="padding: 18px; color: #666; cursor: pointer;">Products</div>
+            <div style="padding: 18px; color: #666; cursor: pointer;">Pricing</div>
+            <div style="padding: 18px; color: #666; cursor: pointer;">Support</div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; padding: 80px; padding-bottom: 40px;">
+        <img src="photo.png" width="780">
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <h1 style="font-size: 2.75rem; line-height: 1.25; font-family: serif; font-weight: 600; color: #463f3f;">
+            Invest in everything
+        </h1>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: -50px;">
+        <h5 style="font-size: 1.25rem; font-family: serif; font-weight: 400;">
+            Online platform to invest in stocks, derivatives, mutual funds, and more
+        </h5>
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <a style="background-color: #387ed1; color: #fff; cursor: pointer; font-size: 20px;
+        font-size: 20px ; border: 1px solid; border-radius: 3px;
+        padding-top: 10px; padding-left: 25px; padding-bottom: 10px; padding-right: 25px;">Sign up Now</a>
+    </div>
+    <div style="display: flex; justify-content: center; background-color: antiquewhite;
+    padding: 5px; padding-bottom: 20px;
+    margin-left: 500px; margin-right: 500px; margin-bottom: 50px; margin-top: 20px;">
+        <div>
+            <h2 style="display: flex; justify-content: center;">Interest rate Calculator</h2>
+            <form>
+                <label for="capital">Capital</label>
+                <input type="number" id="capital" required>
+                <br><br>
+                <label for="years">Years</label>
+                <input type="number" id="years" required>
+                <br><br>
+                <label for="interest">Interest</label>
+                <input type="number" id="interest" required><br>
+                <button style="background-color: #387ed1; color: #fff; cursor: pointer;
+                font-size: 15px ; border: 1px solid; border-radius: 3px; margin-top: 5px; margin-left: 90px;
+                padding-top: 5px; padding-left: 5px; padding-bottom: 5px; padding-right: 5px;" type="button"
+                onclick="calculateInterest()">Calculate</button>
+            </form>
+        </div>
+        <div>
+            <h2 style="display: flex; justify-content: right;
+            margin-top: 100px;" id="result">Returns : 0</h2>
+        </div>
+    </div>
+    <script>
+        function calculateInterest() {
+            var principal = parseFloat(document.getElementById('capital').value);
+            var rate = parseFloat(document.getElementById('interest').value);
+            var time = parseFloat(document.getElementById('years').value);
+
+            var interest = (principal * rate * time) / 100;
+
+            var result = "Returns: " + interest.toFixed(2);
+            document.getElementById('result').textContent = result;
+        }
+    </script>
+</body>
+</html>
